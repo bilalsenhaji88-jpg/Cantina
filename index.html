@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cantine YouCode</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+  <header>
+    <div>
+      <h1>Cantine YouCode</h1>
+      <p>Menu de la semaine · Lundi au Vendredi</p>
+    </div>
+    <div>
+      <button type="button" data-action="toggle-view">Vue tableau</button>
+      <button type="button" data-action="toggle-theme">Mode sombre</button>
+      <button type="button" data-action="complete-week">Compléter la semaine</button>
+      <button type="button" data-action="open-add">+ Ajouter une recette</button>
+    </div>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>Statistiques</h2>
+      <div>
+        <article>
+          <h3>Plats en réserve</h3>
+          <p><span id="stat-reserve">4</span> / <span id="stat-total">11</span> plats</p>
+        </article>
+
+        <article>
+          <h3>Jours prêts</h3>
+          <p><span id="stat-jours">3</span>/5 jours prêts</p>
+          <progress id="stat-progress" value="3" max="5">3 sur 5</progress>
+        </article>
+
+        <article>
+          <h3>Coût de la semaine / apprenant</h3>
+          <p><span id="stat-semaine">160</span> DH</p>
+        </article>
+
+        <article>
+          <h3>Équilibre alimentaire</h3>
+          <p id="stat-equilibre">Équilibré</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Réserve de recettes</h2>
+
+      <div>
+        <label for="search">Rechercher un plat</label>
+        <input type="search" id="search" placeholder="Rechercher un plat">
+
+        <div>
+          <button type="button" data-filter="all">Tous</button>
+          <button type="button" data-filter="Entrée">Entrées</button>
+          <button type="button" data-filter="Plat principal">Plats</button>
+          <button type="button" data-filter="Dessert">Desserts</button>
+        </div>
+      </div>
+
+      <div id="reserve">
+
+        <article data-recipe-id="r7">
+          <p>Plat principal</p>
+          <p>30 DH</p>
+          <h3>Sardines grillées</h3>
+          <p>Classique</p>
+          <button type="button" data-action="edit" data-id="r7">Modifier</button>
+          <button type="button" data-action="delete" data-id="r7">Supprimer</button>
+        </article>
+
+        <article data-recipe-id="r8">
+          <p>Entrée</p>
+          <p>6 DH</p>
+          <h3>Salade de lentilles</h3>
+          <p>Végétarien</p>
+          <button type="button" data-action="edit" data-id="r8">Modifier</button>
+          <button type="button" data-action="delete" data-id="r8">Supprimer</button>
+        </article>
+
+        <article data-recipe-id="r1">
+          <p>Entrée</p>
+          <p>5 DH</p>
+          <h3>Velouté de légumes</h3>
+          <p>[Assigné : Lundi - Entrée]</p>
+          <button type="button" data-action="edit" data-id="r1" disabled>Modifier</button>
+          <button type="button" data-action="delete" data-id="r1" disabled>Supprimer</button>
+        </article>
+
+      </div>
+    </section>
+
+    <section>
+      <h2>Planning de la semaine</h2>
+      <p>Plafond : 50 DH / jour</p>
+
+      <div id="planning">
+
+        <article data-day="Lundi">
+          <h3>Lundi</h3>
+          <p>Prêt</p>
+          <div>
+            <label for="lundi-entree">Entrée</label>
+            <p>+5 DH</p>
+            <select id="lundi-entree" data-action="assign" data-day="Lundi" data-slot="entree">
+              <option value="">En réserve</option>
+              <option value="r1" selected>Velouté de légumes</option>
+              <option value="r8">Salade de lentilles</option>
+            </select>
+          </div>
+          <div>
+            <label for="lundi-plat">Plat principal</label>
+            <p>+25 DH</p>
+            <select id="lundi-plat" data-action="assign" data-day="Lundi" data-slot="plat">
+              <option value="">En réserve</option>
+              <option value="r2" selected>Tajine de poulet</option>
+              <option value="r7">Sardines grillées</option>
+            </select>
+          </div>
+          <div>
+            <label for="lundi-dessert">Dessert</label>
+            <p>+10 DH</p>
+            <select id="lundi-dessert" data-action="assign" data-day="Lundi" data-slot="dessert">
+              <option value="">En réserve</option>
+              <option value="r3" selected>Fruits de saison</option>
+              <option value="r9">Msemen au miel</option>
+            </select>
+          </div>
+          <p>Total jour : <span>40</span> DH / 50 DH max</p>
+          <progress value="40" max="50">40 sur 50</progress>
+          <button type="button" data-action="clear-day" data-day="Lundi">Vider le menu</button>
+        </article>
+
+        <article data-day="Mardi">
+          <h3>Mardi</h3>
+          <p>Prêt</p>
+          <div>
+            <label for="mardi-entree">Entrée</label>
+            <p>+6 DH</p>
+            <select id="mardi-entree" data-action="assign" data-day="Mardi" data-slot="entree">
+              <option value="">En réserve</option>
+              <option value="r4" selected>Salade marocaine</option>
+              <option value="r8">Salade de lentilles</option>
+            </select>
+          </div>
+          <div>
+            <label for="mardi-plat">Plat principal</label>
+            <p>+22 DH</p>
+            <select id="mardi-plat" data-action="assign" data-day="Mardi" data-slot="plat">
+              <option value="">En réserve</option>
+              <option value="r5" selected>Couscous aux légumes</option>
+              <option value="r7">Sardines grillées</option>
+            </select>
+          </div>
+          <div>
+            <label for="mardi-dessert">Dessert</label>
+            <p>+12 DH</p>
+            <select id="mardi-dessert" data-action="assign" data-day="Mardi" data-slot="dessert">
+              <option value="">En réserve</option>
+              <option value="r6" selected>Pastilla au lait</option>
+              <option value="r9">Msemen au miel</option>
+            </select>
+          </div>
+          <p>Total jour : <span>40</span> DH / 50 DH max</p>
+          <progress value="40" max="50">40 sur 50</progress>
+          <button type="button" data-action="clear-day" data-day="Mardi">Vider le menu</button>
+        </article>
+
+        <article data-day="Mercredi">
+          <h3>Mercredi</h3>
+          <p>Incomplet</p>
+          <div>
+            <label for="mercredi-entree">Entrée</label>
+            <p>+7 DH</p>
+            <select id="mercredi-entree" data-action="assign" data-day="Mercredi" data-slot="entree">
+              <option value="">En réserve</option>
+              <option value="r10" selected>Harira</option>
+              <option value="r8">Salade de lentilles</option>
+            </select>
+          </div>
+          <div>
+            <label for="mercredi-plat">Plat principal</label>
+            <p>+28 DH</p>
+            <select id="mercredi-plat" data-action="assign" data-day="Mercredi" data-slot="plat">
+              <option value="">En réserve</option>
+              <option value="r11" selected>Tajine de kefta</option>
+              <option value="r7">Sardines grillées</option>
+            </select>
+          </div>
+          <div>
+            <label for="mercredi-dessert">Dessert</label>
+            <p>—</p>
+            <select id="mercredi-dessert" data-action="assign" data-day="Mercredi" data-slot="dessert">
+              <option value="" selected>En réserve</option>
+              <option value="r9">Msemen au miel</option>
+            </select>
+          </div>
+          <p>Total jour : <span>35</span> DH / 50 DH max</p>
+          <progress value="35" max="50">35 sur 50</progress>
+          <button type="button" data-action="clear-day" data-day="Mercredi">Vider le menu</button>
+        </article>
+
+        <article data-day="Jeudi">
+          <h3>Jeudi</h3>
+          <p>Prêt</p>
+          <div>
+            <label for="jeudi-entree">Entrée</label>
+            <p>+8 DH</p>
+            <select id="jeudi-entree" data-action="assign" data-day="Jeudi" data-slot="entree">
+              <option value="">En réserve</option>
+              <option value="r12" selected>Zaalouk</option>
+              <option value="r8">Salade de lentilles</option>
+            </select>
+          </div>
+          <div>
+            <label for="jeudi-plat">Plat principal</label>
+            <p>+28 DH</p>
+            <select id="jeudi-plat" data-action="assign" data-day="Jeudi" data-slot="plat">
+              <option value="">En réserve</option>
+              <option value="r13" selected>Poisson chermoula</option>
+              <option value="r7">Sardines grillées</option>
+            </select>
+          </div>
+          <div>
+            <label for="jeudi-dessert">Dessert</label>
+            <p>+9 DH</p>
+            <select id="jeudi-dessert" data-action="assign" data-day="Jeudi" data-slot="dessert">
+              <option value="">En réserve</option>
+              <option value="r14" selected>Orange à la cannelle</option>
+              <option value="r9">Msemen au miel</option>
+            </select>
+          </div>
+          <p>Total jour : <span>45</span> DH / 50 DH max</p>
+          <progress value="45" max="50">45 sur 50</progress>
+          <button type="button" data-action="clear-day" data-day="Jeudi">Vider le menu</button>
+        </article>
+
+        <article data-day="Vendredi">
+          <h3>Vendredi</h3>
+          <p>Vide</p>
+          <div>
+            <label for="vendredi-entree">Entrée</label>
+            <p>—</p>
+            <select id="vendredi-entree" data-action="assign" data-day="Vendredi" data-slot="entree">
+              <option value="" selected>En réserve</option>
+              <option value="r8">Salade de lentilles</option>
+            </select>
+          </div>
+          <div>
+            <label for="vendredi-plat">Plat principal</label>
+            <p>—</p>
+            <select id="vendredi-plat" data-action="assign" data-day="Vendredi" data-slot="plat">
+              <option value="" selected>En réserve</option>
+              <option value="r7">Sardines grillées</option>
+            </select>
+          </div>
+          <div>
+            <label for="vendredi-dessert">Dessert</label>
+            <p>—</p>
+            <select id="vendredi-dessert" data-action="assign" data-day="Vendredi" data-slot="dessert">
+              <option value="" selected>En réserve</option>
+              <option value="r9">Msemen au miel</option>
+            </select>
+          </div>
+          <p>Total jour : <span>0</span> DH / 50 DH max</p>
+          <progress value="0" max="50">0 sur 50</progress>
+          <button type="button" data-action="clear-day" data-day="Vendredi">Vider le menu</button>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Projet YouCode · Cantine · 2026</p>
+  </footer>
+
+  <div id="modal" class="hidden">
+    <div role="dialog" aria-modal="true" aria-labelledby="titre-modale">
+      <h2 id="titre-modale">Ajouter une recette</h2>
+      <button type="button" id="modal-close" aria-label="Fermer">×</button>
+
+      <form id="recipe-form" novalidate>
+        <div>
+          <label for="f-name">Nom du plat</label>
+          <input id="f-name" name="name" type="text" aria-describedby="err-name">
+          <p id="err-name"></p>
+        </div>
+
+        <div>
+          <label for="f-category">Catégorie</label>
+          <select id="f-category" name="category" aria-describedby="err-category">
+            <option value="">Choisir une catégorie</option>
+            <option value="Entrée">Entrée</option>
+            <option value="Plat principal">Plat principal</option>
+            <option value="Dessert">Dessert</option>
+          </select>
+          <p id="err-category"></p>
+        </div>
+
+        <div>
+          <label for="f-price">Prix (DH)</label>
+          <input id="f-price" name="price" type="text" inputmode="decimal" aria-describedby="err-price">
+          <p id="err-price"></p>
+        </div>
+
+        <fieldset>
+          <legend>Badge qualitatif</legend>
+          <label><input type="radio" name="badge" value="Bio"> Bio</label>
+          <label><input type="radio" name="badge" value="Végétarien"> Végétarien</label>
+          <label><input type="radio" name="badge" value="Classique" checked> Classique</label>
+        </fieldset>
+
+        <button type="button" id="modal-cancel">Annuler</button>
+        <button type="submit" id="form-submit" disabled>Ajouter</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="confirm" class="hidden">
+    <div role="alertdialog" aria-modal="true" aria-labelledby="titre-confirm">
+      <h3 id="titre-confirm">Confirmer la suppression</h3>
+      <p id="confirm-text">Voulez-vous vraiment supprimer cet élément ?</p>
+      <button type="button" id="confirm-cancel">Annuler</button>
+      <button type="button" id="confirm-ok">Supprimer</button>
+    </div>
+  </div>
+
+  <div id="toasts" aria-live="polite">
+    <div role="status">
+      <p>Recette ajoutée à la réserve.</p>
+      <button type="button" aria-label="Fermer la notification">×</button>
+    </div>
+  </div>
+
+</body>
+</html>
