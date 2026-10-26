@@ -83,8 +83,17 @@ nrecttes.textContent=total
 
 function ajouter(){
     const form=document.getElementById("recipe-form")
-    addEventListener("submit",function(event){
+    form.addEventListener("submit",function(event){
         event.preventDefault()
+        const nom=document.getElementById("recipe-name").value
+        const categorie=document.getElementById("recipe-category").value
+        const prix=Number(document.getElementById("recipe-price").value)
+        let recette={
+            nom:nom,
+            categorie:categorie,
+            prix:prix
+        } 
+        
     })
     
     
