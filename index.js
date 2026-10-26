@@ -81,5 +81,14 @@ recettes.forEach(recette => {
 });
 nrecttes.textContent=total
 
+function ajouter(){
+    const form=document.getElementById("recipe-form")
+    addEventListener("submit",function(event){
+        event.preventDefault()
+    })
+    
+    
+}
+
 
 
