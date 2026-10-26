@@ -80,24 +80,78 @@ recettes.forEach(recette => {
     total++;
 });
 nrecttes.textContent=total
+function ajouter() {
+    const form = document.getElementById("recipe-form");
 
-function ajouter(){
-    const form=document.getElementById("recipe-form")
-    form.addEventListener("submit",function(event){
-        event.preventDefault()
-        const nom=document.getElementById("recipe-name").value
-        const categorie=document.getElementById("recipe-category").value
-        const prix=Number(document.getElementById("recipe-price").value)
-        let recette={
-            nom:nom,
-            categorie:categorie,
-            prix:prix
-        } 
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const nom = document.getElementById("recipe-name").value.trim();
+        const categorie = document.getElementById("recipe-category").value;
+        const prix = Number(document.getElementById("recipe-price").value);
+
+        if (nom === "" || prix <= 0) {
+            console.log("Veuillez remplir correctement les champs.");
+            return;
+        }
+
+        for (let i = 0; i < recettes.length; i++) {
+            if (recettes[i].nom.toLowerCase() === nom.toLowerCase()) {
+                console.log("Cette recette existe déjà.");
+                return;
+            }
+        }
+
+        let id = 0;
+
+        for (let i = 0; i < recettes.length; i++) {
+            if (recettes[i].id > id) {
+                id = recettes[i].id;
+            }
+        }
+
+        id = id + 1;
+
+        const recette = {
+            id: id,
+            nom: nom,
+            prix: prix,
+            categorie: categorie
+        };
+
+        recettes.push(recette);
+
+        document.getElementById("nrecettes").textContent = recettes.length;
+
+        let selecteurs;
+
+        if (categorie === "entree") {
+            selecteurs = document.querySelectorAll('[id*="entree"]');
+        } else if (categorie === "plat") {
+            selecteurs = document.querySelectorAll('[id*="plat"]');
+        } else if (categorie === "dessert") {
+            selecteurs = document.querySelectorAll('[id*="dessert"]');
+        }
+
+        for (let i = 0; i < selecteurs.length; i++) {
+            const option = document.createElement("option");
+
+            option.value = recette.id;
+            option.textContent = recette.nom + " - " + recette.prix + " DH";
+
+            selecteurs[i].appendChild(option);
+        }
+
         
-    })
-    
-    
+        console.log("Recette ajoutée avec succès !");
+        console.log(recettes);
+
+        form.reset();
+        document.getElementById("form-section").classList.add("hidden");
+    });
 }
+
+ajouter()
 
 
 
