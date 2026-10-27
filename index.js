@@ -88,6 +88,9 @@ function ajouter(){
 }
 
 
+function ajouter() {
+    const form = document.getElementById("recipe-form");
+
     form.addEventListener("submit", function(event) {
         event.preventDefault();
 
@@ -126,6 +129,7 @@ function ajouter(){
 
         recettes.push(recette);
         affichager();
+
 
         document.getElementById("nrecettes").textContent = recettes.length;
 
@@ -207,6 +211,10 @@ function affichager() {
 
 affichager();
 
+
+}
+
+ajouter()
 
 
 

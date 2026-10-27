@@ -271,12 +271,14 @@
           <div>
             <label for="recipe-category" class="block text-sm font-medium mb-1">Catégorie</label>
             <select id="recipe-category" required class="w-full border-green-500 border rounded-lg p-3 bg-white">
-              <option value="Entrée">Entrée</option>
-              <option value="Plat principal">Plat principal</option>
-              <option value="Dessert">Dessert</option>
+            
+                <option value="entree">Entrée</option>
+                <option value="plat">Plat principal</option>
+                <option value="dessert">Dessert</option>
+              
             </select>
-          </div>
-
+        
+        </div>
           <div>
             <label for="recipe-price" class="block text-sm font-medium mb-1">Prix en DH</label>
             <input id="recipe-price" type="number"  class="w-full border border-green-500 rounded-lg p-3">
@@ -286,7 +288,7 @@
                   Enregistrer
                 </button>
 
-                <button type="submit"
+                <button type="button"
                   id="cancel-button"
                   class="bg-gray-200 text-red-500 hover:bg-red-200 px-5 py-2 rounded-lg">
                   Annuler
