@@ -1,3 +1,4 @@
+
 const recettes = [
     { id: 1, nom: "Salade marocaine", prix: 8, categorie: "entree", qualite: "vegetarien" },
     { id: 2, nom: "Soupe Harira", prix: 10, categorie: "entree", qualite: "classique" },
@@ -82,7 +83,7 @@ form.addEventListener("submit", function (event) {
 
     messageForm.classList.add("hidden");
 
-    if (nom === "" || categorie === "" || prix <= 0 || qualite === "") {
+    if (nom === "" || categorie === "" || !Number.isFinite(prix) || prix <= 0 || qualite === "") {
         messageForm.textContent = "Veuillez remplir correctement les champs.";
         messageForm.classList.remove("hidden");
         return;
@@ -148,7 +149,7 @@ function affichager() {
         const recette = recettes[i];
 
         const carte = document.createElement("div");
-        carte.className = "bg-white rounded-xl p-5 border border-gray-200";
+        carte.className = "bg-white rounded-xl p-5 border border-gray-200 shadow-sm hover:shadow-md transition-shadow";
 
         const nom = document.createElement("h3");
         nom.textContent = recette.nom;
@@ -161,7 +162,7 @@ function affichager() {
             categorie.textContent = "Entrée";
         } else if (recette.categorie === "plat") {
             categorie.textContent = "Plat principal";
-        } else if (recette.categorie === "dessert") {
+        } else {
             categorie.textContent = "Dessert";
         }
 

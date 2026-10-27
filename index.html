@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,8 +18,8 @@
             </div>
 
             <button id="btn-pdf" type="button"
-                class="bg-gray-800 text-white px-4 py-2 rounded-lg bg-green-700 hover:bg-green-500">
-                Imprimer / PDF 
+                class="text-white px-4 py-2 rounded-lg bg-green-700 hover:bg-green-500">
+                Imprimer / PDF
             </button>
         </div>
     </header>
@@ -29,7 +29,7 @@
         <section class="grid sm:grid-cols-3 gap-4 mb-8">
             <div class="bg-white border border-gray-200 rounded-xl p-5">
                 <p class="text-sm text-gray-500">Budget de la semaine</p>
-                <p class="text-2xl font-bold ">
+                <p class="text-2xl font-bold">
                     <span id="bdsm">0</span> DH
                 </p>
             </div>
@@ -255,6 +255,7 @@
         class="hidden fixed inset-0 z-10 bg-black/40 flex items-center justify-center p-4">
 
         <div class="bg-white w-full max-w-md rounded-xl p-6 shadow-lg">
+
             <div class="flex items-center justify-between mb-5">
                 <h2 class="text-xl font-bold">Recette</h2>
 
@@ -265,9 +266,11 @@
             </div>
 
             <form id="recipe-form">
+
                 <label for="recipe-name" class="block text-sm font-medium mb-1">
                     Nom de la recette
                 </label>
+
                 <input id="recipe-name" type="text" required minlength="3" maxlength="60"
                     class="w-full border rounded-lg p-2 mb-4"
                     placeholder="Ex : Salade marocaine">
@@ -275,8 +278,8 @@
                 <label for="recipe-category" class="block text-sm font-medium mb-1">
                     Catégorie
                 </label>
-                <select id="recipe-category" required
-                    class="w-full border rounded-lg p-2 mb-4">
+
+                <select id="recipe-category" required class="w-full border rounded-lg p-2 mb-4">
                     <option value="">Choisir une catégorie</option>
                     <option value="entree">Entrée</option>
                     <option value="plat">Plat principal</option>
@@ -286,6 +289,7 @@
                 <label for="recipe-price" class="block text-sm font-medium mb-1">
                     Prix (DH)
                 </label>
+
                 <input id="recipe-price" type="number" required min="1" step="0.5"
                     class="w-full border rounded-lg p-2 mb-4"
                     placeholder="Ex : 15">
@@ -293,8 +297,8 @@
                 <label for="recipe-quality" class="block text-sm font-medium mb-1">
                     Qualité
                 </label>
-                <select id="recipe-quality" required
-                    class="w-full border rounded-lg p-2 mb-4">
+
+                <select id="recipe-quality" required class="w-full border rounded-lg p-2 mb-4">
                     <option value="classique">Classique</option>
                     <option value="vegetarien">Végétarien</option>
                     <option value="bio">Bio</option>
@@ -313,10 +317,12 @@
                         Enregistrer
                     </button>
                 </div>
+
             </form>
         </div>
     </section>
 
     <script src="index.js"></script>
+
 </body>
 </html>
