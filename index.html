@@ -2,312 +2,321 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YouCode Cantine</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouCode Cantine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="w-full bg-gray-100 text-gray-800">
+<body class="w-full min-h-screen m-0">
 
-  <header class="w-full border-gray-200">
-    <div class="px-5 py-3 flex flex-wrap justify-between items-center gap-4">
-      <div>
-        <h1 class="text-3xl font-['Playfair_Display'] text-green-500">YouCode Cantine</h1>
-        <p class="text-sm text-gray-500">Gestion du menu hebdomadaire</p>
-      </div>
+    <header class="w-full bg-white border-b border-gray-200">
+        <div class="w-full px-4 md:px-8 py-5 flex items-center justify-between gap-4">
+            <div>
+                <h1 class="text-2xl font-bold text-green-700">YouCode Cantine</h1>
+                <p class="text-sm text-gray-500">Planification des menus de la semaine</p>
+            </div>
 
-      <button id="add-button" class="bg-green-500 hover:bg-green-300 text-white px-4 py-2 rounded-lg">
-        + Ajouter une recette
-      </button>
-    </div>
-  </header>
-
-  <main class="w-full px-5 py-8">
-
-    <section class="grid sm:grid-cols-3 gap-4 mb-8">
-      <div class="border rounded-xl p-5 bg-green-200">
-        <p class="text-sm text-gray-500">Le budget hebdomadaire</p>
-        <p class="text-2xl font-bold mt-2"><span id="bdsm">0</span> DH</p>
-      </div>
-
-      <div class="bg-green-200 border rounded-xl p-5">
-        <p class="text-sm text-gray-500">Recettes disponibles</p>
-        <p class="font-bold text-2xl"><span id="nrecettes">0</span></p>
-      </div>
-
-      <div class="bg-green-200 border rounded-xl p-5">
-        <p class="text-sm text-gray-500">Jours planifiés</p>
-        <p id="planned-count" class="text-2xl font-bold mt-2">0 / 5</p>
-      </div>
-    </section>
-
-    <section class="mb-10">
-      <div class="mb-5">
-        <h2 class="text-xl font-bold">Planning de la semaine</h2>
-        <p class="text-sm text-gray-500 mt-1">Choisissez les repas de chaque jour.</p>
-<section id="days" class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
-
-  <article class="flex flex-col rounded-xl border border-green-200 bg-green-50 p-5">
-    <div class="mb-5 flex items-center justify-between gap-3">
-      <h2 class="text-xl font-bold text-green-900">Lundi</h2>
-      <span class="rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-800">0 / 50 DH</span>
-    </div>
-
-    <div class="flex-1 space-y-4">
-      <div>
-        <label for="entree-lundi" class="mb-1.5 block text-sm font-medium text-gray-700">Entrée</label>
-        <select id="entree-lundi" class="w-full rounded-lg border border-green-200 bg-white px-3 py-3 text-gray-700 outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200">
-          <option value="">Choisir une entrée</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="plat-lundi" class="mb-1.5 block text-sm font-medium text-gray-700">Plat principal</label>
-        <select id="plat-lundi" class="w-full rounded-lg border border-green-200 bg-white px-3 py-3 text-gray-700 outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200">
-          <option value="">Choisir un plat</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="dessert-lundi" class="mb-1.5 block text-sm font-medium text-gray-700">Dessert</label>
-        <select id="dessert-lundi" class="w-full rounded-lg border border-green-200 bg-white px-3 py-3 text-gray-700 outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200">
-          <option value="">Choisir un dessert</option>
-        </select>
-      </div>
-    <div>
-      <button type="button" class="add-menu-button bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-200">
-        +Ajouter
-      </button>
-    </div>
-    </div>
-
-    <div class="mt-5 flex items-center justify-between border-t border-green-200 pt-4">
-      <span class="text-sm font-medium text-gray-600">Total du menu</span>
-      <span class="font-bold text-green-800">0 DH</span>
-    </div>
-  </article>
-
-  <article class="flex flex-col rounded-xl border border-green-200 bg-green-50 p-5">
-    <div class="mb-5 flex items-center justify-between gap-3">
-      <h2 class="text-xl font-bold text-green-900">Mardi</h2>
-      <span class="rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-800">0 / 50 DH</span>
-    </div>
-
-    <div class="flex-1 space-y-4">
-      <div>
-        <label for="entree-mardi" class="mb-1.5 block text-sm font-medium text-gray-700">Entrée</label>
-        <select id="entree-mardi" class="w-full rounded-lg border border-green-200 bg-white px-3 py-3 text-gray-700 outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200">
-          <option value="">Choisir une entrée</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="plat-mardi" class="mb-1.5 block text-sm font-medium text-gray-700">Plat principal</label>
-        <select id="plat-mardi" class="w-full rounded-lg border border-green-200 bg-white px-3 py-3 text-gray-700 outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200">
-          <option value="">Choisir un plat</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="dessert-mardi" class="mb-1.5 block text-sm font-medium text-gray-700">Dessert</label>
-        <select id="dessert-mardi" class="w-full rounded-lg border border-green-200 bg-white px-3 py-3 text-gray-700 outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200">
-          <option value="">Choisir un dessert</option>
-        </select>
-      </div>
-      <button type="button" class="add-menu-button bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-200">
-        +Ajouter
-      </button>
-    </div>
-
-    <div class="mt-5 flex items-center justify-between border-t border-green-200 pt-4">
-      <span class="text-sm font-medium text-gray-600">Total du menu</span>
-      <span class="font-bold text-green-800">0 DH</span>
-    </div>
-  </article>
-
-  <article class="flex flex-col rounded-xl border border-green-200 bg-green-50 p-5">
-    <div class="mb-5 flex items-center justify-between gap-3">
-      <h2 class="text-xl font-bold text-green-900">Mercredi</h2>
-      <span class="rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-800">0 / 50 DH</span>
-    </div>
-
-    <div class="flex-1 space-y-4">
-      <div>
-        <label for="entree-mercredi" class="mb-1.5 block text-sm font-medium text-gray-700">Entrée</label>
-        <select id="entree-mercredi" class="w-full rounded-lg border border-green-200 bg-white px-3 py-3 text-gray-700 outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200">
-          <option value="">Choisir une entrée</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="plat-mercredi" class="mb-1.5 block text-sm font-medium text-gray-700">Plat principal</label>
-        <select id="plat-mercredi" class="w-full rounded-lg border border-green-200 bg-white px-3 py-3 text-gray-700 outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200">
-          <option value="">Choisir un plat</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="dessert-mercredi" class="mb-1.5 block text-sm font-medium text-gray-700">Dessert</label>
-        <select id="dessert-mercredi" class="w-full rounded-lg border border-green-200 bg-white px-3 py-3 text-gray-700 outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200">
-          <option value="">Choisir un dessert</option>
-        </select>
-      </div>
-      <button type="button" class="add-menu-button bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-200">
-        +Ajouter
-      </button>
-    </div>
-
-    <div class="mt-5 flex items-center justify-between border-t border-green-200 pt-4">
-      <span class="text-sm font-medium text-gray-600">Total du menu</span>
-      <span class="font-bold text-green-800">0 DH</span>
-    </div>
-  </article>
-
-  <article class="flex flex-col rounded-xl border border-green-200 bg-green-50 p-5">
-    <div class="mb-5 flex items-center justify-between gap-3">
-      <h2 class="text-xl font-bold text-green-900">Jeudi</h2>
-      <span class="rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-800">0 / 50 DH</span>
-    </div>
-
-    <div class="flex-1 space-y-4">
-      <div>
-        <label for="entree-jeudi" class="mb-1.5 block text-sm font-medium text-gray-700">Entrée</label>
-        <select id="entree-jeudi" class="w-full rounded-lg border border-green-200 bg-white px-3 py-3 text-gray-700 outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200">
-          <option value="">Choisir une entrée</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="plat-jeudi" class="mb-1.5 block text-sm font-medium text-gray-700">Plat principal</label>
-        <select id="plat-jeudi" class="w-full rounded-lg border border-green-200 bg-white px-3 py-3 text-gray-700 outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200">
-          <option value="">Choisir un plat</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="dessert-jeudi" class="mb-1.5 block text-sm font-medium text-gray-700">Dessert</label>
-        <select id="dessert-jeudi" class="w-full rounded-lg border border-green-200 bg-white px-3 py-3 text-gray-700 outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200">
-          <option value="">Choisir un dessert</option>
-        </select>
-      </div>
-      <button type="button" class="add-menu-button bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-200">
-        +Ajouter
-      </button>
-    </div>
-
-    <div class="mt-5 flex items-center justify-between border-t border-green-200 pt-4">
-      <span class="text-sm font-medium text-gray-600">Total du menu</span>
-      <span class="font-bold text-green-800">0 DH</span>
-    </div>
-  </article>
-
-  <article class="flex flex-col rounded-xl border border-green-200 bg-green-50 p-5">
-    <div class="mb-5 flex items-center justify-between gap-3">
-      <h2 class="text-xl font-bold text-green-900">Vendredi</h2>
-      <span class="rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-800">0 / 50 DH</span>
-    </div>
-
-    <div class="flex-1 space-y-4">
-      <div>
-        <label for="entree-vendredi" class="mb-1.5 block text-sm font-medium text-gray-700">Entrée</label>
-        <select id="entree-vendredi" class="w-full rounded-lg border border-green-200 bg-white px-3 py-3 text-gray-700 outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200">
-          <option value="">Choisir une entrée</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="plat-vendredi" class="mb-1.5 block text-sm font-medium text-gray-700">Plat principal</label>
-        <select id="plat-vendredi" class="w-full rounded-lg border border-green-200 bg-white px-3 py-3 text-gray-700 outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200">
-          <option value="">Choisir un plat</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="dessert-vendredi" class="mb-1.5 block text-sm font-medium text-gray-700">Dessert</label>
-        <select id="dessert-vendredi" class="w-full rounded-lg border border-green-200 bg-white px-3 py-3 text-gray-700 outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200">
-          <option value="">Choisir un dessert</option>
-        </select>
-      </div>
-      <button type="button" class="add-menu-button bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-200">
-        +Ajouter
-      </button>
-    </div>
-
-    <div class="mt-5 flex items-center justify-between border-t border-green-200 pt-4">
-      <span class="text-sm font-medium text-gray-600">Total du menu</span>
-      <span class="font-bold text-green-800">0 DH</span>
-    </div>
-  </article>
-
-</section>
-
-    <section>
-      <div class="flex flex-wrap justify-between items-center gap-4 mb-5">
-        <div>
-          <h2 class="text-xl font-bold">Réserve de recettes</h2>
+            <button id="btn-pdf" type="button"
+                class="bg-gray-800 text-white px-4 py-2 rounded-lg bg-green-700 hover:bg-green-500">
+                Imprimer / PDF 
+            </button>
         </div>
+    </header>
 
-      </div>
+    <main class="w-full px-4 md:px-8 py-8">
 
-      <div id="reserve" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        <section class="grid sm:grid-cols-3 gap-4 mb-8">
+            <div class="bg-white border border-gray-200 rounded-xl p-5">
+                <p class="text-sm text-gray-500">Budget de la semaine</p>
+                <p class="text-2xl font-bold ">
+                    <span id="bdsm">0</span> DH
+                </p>
+            </div>
 
-      <p id="empty-reserve" class="hidden text-center text-gray-500 py-8">
-        Aucune recette disponible.
-      </p>
-    </section>
+            <div class="bg-white border border-gray-200 rounded-xl p-5">
+                <p class="text-sm text-gray-500">Nombre de recettes</p>
+                <p id="nrecettes" class="text-2xl font-bold">0</p>
+            </div>
 
-    <section id="form-section" class="hidden fixed inset-0  flex items-center justify-center bg-black/50 ">
-      <div class="bg-white border rounded-xl p-6 max-w-xl">
-        <h2 class="text-xl font-bold mb-5">Ajouter une recette</h2>
+            <div class="bg-white border border-gray-200 rounded-xl p-5">
+                <p class="text-sm text-gray-500">Jours planifiés</p>
+                <p id="planned-count" class="text-2xl font-bold">0 / 5</p>
+            </div>
+        </section>
 
-        <form id="recipe-form" class="space-y-4">
-          <div>
-            <label for="recipe-name" class="block text-sm font-medium mb-1">Nom de la recette</label>
-            <input id="recipe-name" type="text" maxlength="60" required class="w-full border border-green-500 rounded-lg p-3">
-          </div>
+        <section class="mb-10">
+            <div class="flex items-center justify-between gap-4 mb-5">
+                <div>
+                    <h2 class="text-xl font-bold">Menu de la semaine</h2>
+                    <p class="text-sm text-gray-500">Budget maximum : 50 DH par jour</p>
+                </div>
+            </div>
 
-          <div>
-            <label for="recipe-category" class="block text-sm font-medium mb-1">Catégorie</label>
-            <select id="recipe-category" required class="w-full border-green-500 border rounded-lg p-3 bg-white">
-            
-                <option value="entree">Entrée</option>
-                <option value="plat">Plat principal</option>
-                <option value="dessert">Dessert</option>
-              
-            </select>
-        
+            <div id="days" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 w-full">
+
+                <div class="day-card bg-green-50 border border-green-200 rounded-xl p-5">
+                    <h3 class="font-bold text-lg mb-4">Lundi</h3>
+
+                    <label class="block text-sm mb-1" for="entree-lundi">Entrée</label>
+                    <select id="entree-lundi" class="w-full border rounded-lg p-2 mb-3 bg-white">
+                        <option value="">Choisir une recette</option>
+                    </select>
+
+                    <label class="block text-sm mb-1" for="plat-lundi">Plat principal</label>
+                    <select id="plat-lundi" class="w-full border rounded-lg p-2 mb-3 bg-white">
+                        <option value="">Choisir une recette</option>
+                    </select>
+
+                    <label class="block text-sm mb-1" for="dessert-lundi">Dessert</label>
+                    <select id="dessert-lundi" class="w-full border rounded-lg p-2 mb-4 bg-white">
+                        <option value="">Choisir une recette</option>
+                    </select>
+
+                    <div class="flex items-center justify-between gap-2 mb-3">
+                        <span class="text-sm text-gray-600">Total du jour</span>
+                        <span class="day-total font-bold">0 DH</span>
+                    </div>
+
+                    <p class="day-budget inline-block rounded-lg bg-green-100 text-green-800 px-3 py-1 text-sm mb-3">
+                        0 / 50 DH
+                    </p>
+
+                    <p class="day-message hidden text-sm mb-3"></p>
+
+                    <button type="button"
+                        class="add-menu-button w-full bg-green-600 text-white rounded-lg px-4 py-2 hover:bg-green-700">
+                        Valider le menu
+                    </button>
+                </div>
+
+                <div class="day-card bg-green-50 border border-green-200 rounded-xl p-5">
+                    <h3 class="font-bold text-lg mb-4">Mardi</h3>
+
+                    <label class="block text-sm mb-1" for="entree-mardi">Entrée</label>
+                    <select id="entree-mardi" class="w-full border rounded-lg p-2 mb-3 bg-white">
+                        <option value="">Choisir une recette</option>
+                    </select>
+
+                    <label class="block text-sm mb-1" for="plat-mardi">Plat principal</label>
+                    <select id="plat-mardi" class="w-full border rounded-lg p-2 mb-3 bg-white">
+                        <option value="">Choisir une recette</option>
+                    </select>
+
+                    <label class="block text-sm mb-1" for="dessert-mardi">Dessert</label>
+                    <select id="dessert-mardi" class="w-full border rounded-lg p-2 mb-4 bg-white">
+                        <option value="">Choisir une recette</option>
+                    </select>
+
+                    <div class="flex items-center justify-between gap-2 mb-3">
+                        <span class="text-sm text-gray-600">Total du jour</span>
+                        <span class="day-total font-bold">0 DH</span>
+                    </div>
+
+                    <p class="day-budget inline-block rounded-lg bg-green-100 text-green-800 px-3 py-1 text-sm mb-3">
+                        0 / 50 DH
+                    </p>
+
+                    <p class="day-message hidden text-sm mb-3"></p>
+
+                    <button type="button"
+                        class="add-menu-button w-full bg-green-600 text-white rounded-lg px-4 py-2 hover:bg-green-700">
+                        Valider le menu
+                    </button>
+                </div>
+
+                <div class="day-card bg-green-50 border border-green-200 rounded-xl p-5">
+                    <h3 class="font-bold text-lg mb-4">Mercredi</h3>
+
+                    <label class="block text-sm mb-1" for="entree-mercredi">Entrée</label>
+                    <select id="entree-mercredi" class="w-full border rounded-lg p-2 mb-3 bg-white">
+                        <option value="">Choisir une recette</option>
+                    </select>
+
+                    <label class="block text-sm mb-1" for="plat-mercredi">Plat principal</label>
+                    <select id="plat-mercredi" class="w-full border rounded-lg p-2 mb-3 bg-white">
+                        <option value="">Choisir une recette</option>
+                    </select>
+
+                    <label class="block text-sm mb-1" for="dessert-mercredi">Dessert</label>
+                    <select id="dessert-mercredi" class="w-full border rounded-lg p-2 mb-4 bg-white">
+                        <option value="">Choisir une recette</option>
+                    </select>
+
+                    <div class="flex items-center justify-between gap-2 mb-3">
+                        <span class="text-sm text-gray-600">Total du jour</span>
+                        <span class="day-total font-bold">0 DH</span>
+                    </div>
+
+                    <p class="day-budget inline-block rounded-lg bg-green-100 text-green-800 px-3 py-1 text-sm mb-3">
+                        0 / 50 DH
+                    </p>
+
+                    <p class="day-message hidden text-sm mb-3"></p>
+
+                    <button type="button"
+                        class="add-menu-button w-full bg-green-600 text-white rounded-lg px-4 py-2 hover:bg-green-700">
+                        Valider le menu
+                    </button>
+                </div>
+
+                <div class="day-card bg-green-50 border border-green-200 rounded-xl p-5">
+                    <h3 class="font-bold text-lg mb-4">Jeudi</h3>
+
+                    <label class="block text-sm mb-1" for="entree-jeudi">Entrée</label>
+                    <select id="entree-jeudi" class="w-full border rounded-lg p-2 mb-3 bg-white">
+                        <option value="">Choisir une recette</option>
+                    </select>
+
+                    <label class="block text-sm mb-1" for="plat-jeudi">Plat principal</label>
+                    <select id="plat-jeudi" class="w-full border rounded-lg p-2 mb-3 bg-white">
+                        <option value="">Choisir une recette</option>
+                    </select>
+
+                    <label class="block text-sm mb-1" for="dessert-jeudi">Dessert</label>
+                    <select id="dessert-jeudi" class="w-full border rounded-lg p-2 mb-4 bg-white">
+                        <option value="">Choisir une recette</option>
+                    </select>
+
+                    <div class="flex items-center justify-between gap-2 mb-3">
+                        <span class="text-sm text-gray-600">Total du jour</span>
+                        <span class="day-total font-bold">0 DH</span>
+                    </div>
+
+                    <p class="day-budget inline-block rounded-lg bg-green-100 text-green-800 px-3 py-1 text-sm mb-3">
+                        0 / 50 DH
+                    </p>
+
+                    <p class="day-message hidden text-sm mb-3"></p>
+
+                    <button type="button"
+                        class="add-menu-button w-full bg-green-600 text-white rounded-lg px-4 py-2 hover:bg-green-700">
+                        Valider le menu
+                    </button>
+                </div>
+
+                <div class="day-card bg-green-50 border border-green-200 rounded-xl p-5">
+                    <h3 class="font-bold text-lg mb-4">Vendredi</h3>
+
+                    <label class="block text-sm mb-1" for="entree-vendredi">Entrée</label>
+                    <select id="entree-vendredi" class="w-full border rounded-lg p-2 mb-3 bg-white">
+                        <option value="">Choisir une recette</option>
+                    </select>
+
+                    <label class="block text-sm mb-1" for="plat-vendredi">Plat principal</label>
+                    <select id="plat-vendredi" class="w-full border rounded-lg p-2 mb-3 bg-white">
+                        <option value="">Choisir une recette</option>
+                    </select>
+
+                    <label class="block text-sm mb-1" for="dessert-vendredi">Dessert</label>
+                    <select id="dessert-vendredi" class="w-full border rounded-lg p-2 mb-4 bg-white">
+                        <option value="">Choisir une recette</option>
+                    </select>
+
+                    <div class="flex items-center justify-between gap-2 mb-3">
+                        <span class="text-sm text-gray-600">Total du jour</span>
+                        <span class="day-total font-bold">0 DH</span>
+                    </div>
+
+                    <p class="day-budget inline-block rounded-lg bg-green-100 text-green-800 px-3 py-1 text-sm mb-3">
+                        0 / 50 DH
+                    </p>
+
+                    <p class="day-message hidden text-sm mb-3"></p>
+
+                    <button type="button"
+                        class="add-menu-button w-full bg-green-600 text-white rounded-lg px-4 py-2 hover:bg-green-700">
+                        Valider le menu
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="mb-10">
+            <div class="flex items-center justify-between gap-4 mb-5">
+                <div>
+                    <h2 class="text-xl font-bold">Réserve de recettes</h2>
+                    <p class="text-sm text-gray-500">Ajouter et gérer les recettes disponibles</p>
+                </div>
+
+                <button id="add-button" type="button"
+                    class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+                    + Ajouter
+                </button>
+            </div>
+
+            <div id="reserve" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        </section>
+
+    </main>
+
+    <section id="form-section"
+        class="hidden fixed inset-0 z-10 bg-black/40 flex items-center justify-center p-4">
+
+        <div class="bg-white w-full max-w-md rounded-xl p-6 shadow-lg">
+            <div class="flex items-center justify-between mb-5">
+                <h2 class="text-xl font-bold">Recette</h2>
+
+                <button id="close-modal" type="button"
+                    class="text-gray-500 text-2xl hover:text-gray-800">
+                    &times;
+                </button>
+            </div>
+
+            <form id="recipe-form">
+                <label for="recipe-name" class="block text-sm font-medium mb-1">
+                    Nom de la recette
+                </label>
+                <input id="recipe-name" type="text" required minlength="3" maxlength="60"
+                    class="w-full border rounded-lg p-2 mb-4"
+                    placeholder="Ex : Salade marocaine">
+
+                <label for="recipe-category" class="block text-sm font-medium mb-1">
+                    Catégorie
+                </label>
+                <select id="recipe-category" required
+                    class="w-full border rounded-lg p-2 mb-4">
+                    <option value="">Choisir une catégorie</option>
+                    <option value="entree">Entrée</option>
+                    <option value="plat">Plat principal</option>
+                    <option value="dessert">Dessert</option>
+                </select>
+
+                <label for="recipe-price" class="block text-sm font-medium mb-1">
+                    Prix (DH)
+                </label>
+                <input id="recipe-price" type="number" required min="1" step="0.5"
+                    class="w-full border rounded-lg p-2 mb-4"
+                    placeholder="Ex : 15">
+
+                <label for="recipe-quality" class="block text-sm font-medium mb-1">
+                    Qualité
+                </label>
+                <select id="recipe-quality" required
+                    class="w-full border rounded-lg p-2 mb-4">
+                    <option value="classique">Classique</option>
+                    <option value="vegetarien">Végétarien</option>
+                    <option value="bio">Bio</option>
+                </select>
+
+                <p id="form-message" class="hidden text-sm text-red-600 mb-4"></p>
+
+                <div class="flex justify-end gap-3">
+                    <button id="cancel-button" type="button"
+                        class="border border-gray-300 rounded-lg px-4 py-2 hover:bg-gray-100">
+                        Annuler
+                    </button>
+
+                    <button id="save-button" type="submit"
+                        class="bg-green-600 text-white rounded-lg px-4 py-2 hover:bg-green-700">
+                        Enregistrer
+                    </button>
+                </div>
+            </form>
         </div>
-          <div>
-            <label for="recipe-price" class="block text-sm font-medium mb-1">Prix en DH</label>
-            <input id="recipe-price" type="number"  class="w-full border border-green-500 rounded-lg p-3">
-              <div class="flex gap-3 py-3">
-                <button type="submit"
-                  class="bg-green-500 text-white px-5 hover:bg-green-200 py-2 rounded-lg">
-                  Enregistrer
-                </button>
-
-                <button type="button"
-                  id="cancel-button"
-                  class="bg-gray-200 text-red-500 hover:bg-red-200 px-5 py-2 rounded-lg">
-                  Annuler
-                </button>
-              </div>
-          
-        </form>
-
-      </div>
     </section>
 
-<div class="mt-6 flex flex-wrap justify-end">
-
-  <button   id="btn-pdf" type="button" class="rounded-lg bg-green-600 px-5 py-3 font-semibold text-white transition hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-offset-2">
-    Télécharger en PDF
-  </button>
-</div>
-  </main>
-  <script src="index.js"></script>
-
+    <script src="index.js"></script>
 </body>
 </html>
