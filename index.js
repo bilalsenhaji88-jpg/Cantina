@@ -80,6 +80,14 @@ recettes.forEach(recette => {
     total++;
 });
 nrecttes.textContent=total
+const form=document.getElementById("recipe-form")
+function ajouter(){
+   addEventListener("submit",function(event){
+        event.preventDefault()
+    }) 
+}
+
+
 function ajouter() {
     const form = document.getElementById("recipe-form");
 
@@ -120,6 +128,8 @@ function ajouter() {
         };
 
         recettes.push(recette);
+        affichager();
+
 
         document.getElementById("nrecettes").textContent = recettes.length;
 
@@ -149,6 +159,59 @@ function ajouter() {
         form.reset();
         document.getElementById("form-section").classList.add("hidden");
     });
+
+
+ajouter()
+function affichager() {
+    const reserve = document.getElementById("reserve");
+    reserve.innerHTML = "";
+
+    for (let i = 0; i < recettes.length; i++) {
+        let recette = recettes[i];
+
+        const carte = document.createElement("div");
+        carte.className = "bg-white rounded-xl p-5 border border-gray-200 shadow-sm hover:shadow-md transition-shadow";
+
+        const nom = document.createElement("h3");
+        nom.textContent = recette.nom;
+        nom.className = "text-lg font-bold text-gray-800 mb-2";
+        carte.appendChild(nom);
+
+        const categorie = document.createElement("p");
+
+        if (recette.categorie === "entree") {
+            categorie.textContent = "Entrée"
+        } else if (recette.categorie === "plat") {
+            categorie.textContent = "Plat principal"
+        } else if (recette.categorie === "dessert") {
+            categorie.textContent = "Dessert"
+        }
+
+        categorie.className = "text-sm text-gray-500 mb-3"
+        carte.appendChild(categorie);
+
+        const prix = document.createElement("p")
+        prix.textContent = recette.prix + " DH";
+        prix.className = "text-green-700 font-bold mb-4"
+        carte.appendChild(prix);
+
+        const modifier = document.createElement("button")
+        modifier.textContent = "Modifier";
+        modifier.className = "bg-green-600 px-4 py-2 rounded-lg text-white hover:bg-green-200 transition-colors mr-2";
+        carte.appendChild(modifier);
+
+        const supprimer = document.createElement("button");
+        supprimer.textContent = "Supprimer";
+        supprimer.className = "bg-red-500 px-4 py-2 rounded-lg text-white hover:bg-red-200 transition-colors";
+        carte.appendChild(supprimer);
+
+        reserve.appendChild(carte);
+    }
+}
+
+affichager();
+
+
 }
 
 ajouter()
